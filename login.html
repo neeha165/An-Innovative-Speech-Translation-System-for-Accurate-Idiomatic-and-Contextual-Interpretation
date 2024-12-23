@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+  <div class="loader-container" id="loaderContainer">
+    <div class="loader"></div>
+</div>
+    <header class="sticky-header">
+
+        <nav class="navbar ">
+          <h1 class="logo"><span>Welcome to LIPSync!</span></h1>
+          <ul class="nav-links">
+            <li><a href="login.html">Home</a></li>
+          
+            <li><a class="username" href="login.html">Login</a></li>
+           
+    
+          </ul>
+        </nav>
+      </header>
+
+    <div class="login-heading">
+        <h2>Login To Translation!</h2>
+      </div>
+      <div class="login-container">
+        <div class="login-content">
+          <div class="image-container">
+            <img src="https://mma.prnewswire.com/media/2161320/HitPaw_AI_video_Translator.jpg?p=twitter" width="300" alt="Image" class="login-image">
+          </div>
+          <div class="form-container">
+            <h2>Login</h2>
+            <form class="login-form" id="login-form">
+              <div class="input-group">
+               
+                <input type="text" id="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="input-group">
+                
+                <input type="password" id="password" name="password" placeholder="password" required>
+              </div>
+              <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html" >Sign Up</a></p>
+          </div>
+        </div>
+      </div>
+
+     
+      
+        <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+  apiKey: "AIzaSyClTGVwFVJsbIPADRu5xct_TEAt2vd2eK0",
+  authDomain: "dynamicdub-a4a0b.firebaseapp.com",
+  databaseURL: "https://dynamicdub-a4a0b-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "dynamicdub-a4a0b",
+  storageBucket: "dynamicdub-a4a0b.appspot.com",
+  messagingSenderId: "539916820095",
+  appId: "1:539916820095:web:2d6121a2e6e3265cc7a94a",
+  measurementId: "G-9RXXZD5JNC"
+};
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Function to handle login process
+        async function login(event) {
+            event.preventDefault(); // Prevent default form submission
+            loaderContainer.style.display = 'flex';
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Sign in the user with email and password
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // Retrieve username associated with the email from Firestore
+               
+
+                // Redirect to index.html after successful login
+                
+                setTimeout(() => {
+      
+                console.log('Login successful');
+                window.location.href = `new.html?email=${encodeURIComponent(email)}`;
+                }, 2000);
+            } catch (error) {
+                console.error(error);
+                alert("Error logging in: " + error.message);
+            }
+        }
+
+        // Function to retrieve username associated with the email from Firestore
+        async function getUsernameFromFirestore(email) {
+            const usersRef = query(db.collection('users'). where('email', '==', email));
+            const querySnapshot = await getDocs(usersRef);
+            if (!querySnapshot.empty) {
+                return querySnapshot.docs[0].data().username;
+            } else {
+                throw new Error("Username not found for the provided email.");
+            }
+        }
+
+        // Add event listener to the login form for submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('login-form');
+            const loaderContainer = document.getElementById('loaderContainer');
+            form.addEventListener('submit', login);
+        });
+
+</script>
+</body>
+</html>

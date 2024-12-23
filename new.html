@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="sticky-header">
+    <nav class="navbar ">
+      <h1 class="logo"><span>Welcome <span id="emailDisplay"></span></span></h1>
+      <ul class="nav-links">
+        <li><a href="#index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a id="translateLink" href="#">Translate</a></li>
+       
+        <li><span><u><button  id="logoutButton" class="username">Logout</button></u></span></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="home-section">
+      <div class="section-container">
+        <div class="media-content">
+          <img src="https://images.wavel.ai/solutions/2022/09/telegu1-1.webp" alt="Your Image" class="main-image">
+        </div>
+        <div class="text-content">
+          <div class="glass-content">
+            <h1 class="logo"><span id="revealText">Welcome to Our Website</span></h1>
+            <p>Explore our services and discover...</p>
+            <button id="exploreButton" class="custom-button"> <a href="#"></a>Explore</button>
+          </div>
+          <div class="circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="custom-section" id="demo">
+      <h1 align ="center" class="gradient-heading">Demo Video</h1>
+      <div class="section-wrapper">
+        <div class="custom-card">
+          <div class="custom-video">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/GCGOHG6f8j0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="custom-content">
+            <h2>Translate Your Video in Different Languages</h2>
+            <p>Select the Language to Translate...</p>
+            <button class="custom-button" id="#translating">get started</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <div class="about-heading">
+        </div>
+        <div class="about-content">
+          <h1 class="gradient-heading">
+            <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
+            <span> </span><span>U</span><span>s</span>
+          </h1>
+          <p class="text-content">
+            At <b>Translation</b>, we specialize in bridging language gaps through our expert video translation services. With a mission to connect the world through seamless communication, we bring your videos to global audiences by translating content into multiple languages.
+          </p>
+          <a href="#learn-more" class="learn-more-button">Learn More</a>
+        </div>
+        <div class="cards-row">
+          <div class="animated-card">
+     
+            <div class="imgBx">
+              <img src="data:image/jpeg;base64,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" alt="Person 1">
+            </div>
+            <div class="contentBx">
+              <h2>Card 1</h2>
+              <p>Description for Card 1</p>
+              <div class="size">
+              </div>
+              <div class="color">
+                <h3>Color :</h3>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <a href="#">Learn More</a>
+            </div>
+          </div>
+          <div class="animated-card">
+         
+            <div class="imgBx">
+              <img src="https://media.wired.com/photos/5cd03fc84ef5ad318eea3885/master/w_2560%2Cc_limit/microsoft-3590.jpg" alt="Person 2">
+            </div>
+            <div class="contentBx">
+              <h2>Card 2</h2>
+              <p>Description for Card 2</p>
+              <div class="size">
+                
+              </div>
+              <div class="color">
+                <h3>Color :</h3>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <a href="#">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="custom-reviews">
+  <h2 class="gradient-heading">Customer Reviews</h2>
+  <div class="custom-carousel">
+    <div class="customes-card active">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" class="image-carousel" alt="Person 1">
+      <h3>John Doe</h3>
+      <p>Excellent</p>
+    </div>
+    <div class="customes-card">
+      <img src="https://www.w3schools.com/howto/img_avatar.png"class="image-carousel" alt="Person 1">
+      <h3>Jane Smith</h3>
+      <p>Awesome</p>
+    </div>
+    <div class="customes-card">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" class="image-carousel" alt="Person 1">
+      <h3>David Johnson</h3>
+      <p>Super</p>
+    </div>
+    <div class="customes-card">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" class="image-carousel" alt="Person 1">
+      <h3>Emily Davis</h3>
+      <p>Excellent</p>
+    </div>
+    <div class="customes-card">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" class="image-carousel" alt="Person 1">
+      <h3>Emily Davis</h3>
+      <p>Awesome</p>
+    </div>
+    <div class="customes-card">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" class="image-carousel" alt="Person 1">
+      <h3>Emily Davis</h3>
+      <p>Fantastic</p>
+    </div>
+  </div>
+  <div class="custom-controls">
+    <div class="custom-prev" id="prevBtn"><</div>
+    <div class="custom-next" id="nextBtn">></div>
+  </div>
+</section>
+</main>
+<footer class="custom-footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+    
+      <h1 class="logo"><span>DynamicDub</span></h1>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+    
+      <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2023 Your Company. All rights reserved.</p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module">
+ // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyClTGVwFVJsbIPADRu5xct_TEAt2vd2eK0",
+  authDomain: "dynamicdub-a4a0b.firebaseapp.com",
+  databaseURL: "https://dynamicdub-a4a0b-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "dynamicdub-a4a0b",
+  storageBucket: "dynamicdub-a4a0b.appspot.com",
+  messagingSenderId: "539916820095",
+  appId: "1:539916820095:web:2d6121a2e6e3265cc7a94a",
+  measurementId: "G-9RXXZD5JNC"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const db = getDatabase();
+
+// Function to extract email from URL
+function extractEmailFromURL(url) {
+  // Remove hash part if present
+  const cleanUrl = url.split('#')[0];
+  
+  // Split URL to extract query string
+  const queryString = cleanUrl.split('?')[1];
+  
+  if (queryString) {
+    // Parse query string
+    const params = new URLSearchParams(queryString);
+    
+    // Retrieve email parameter value
+    return params.get('email');
+  }
+  
+  return null;
+}const loggedInUser = localStorage.getItem("loggedInUser");
+// Function to fetch username from Realtime Database based on email
+async function fetchUsernameFromEmail(email) {
+  try {
+    const usersRef = ref(db, 'users');
+    const snapshot = await get(usersRef);
+    const users = snapshot.val();
+    for (const userId in users) {
+      if (users[userId].email === email) {
+        return users[userId].username;
+      }
+    }
+    return null;
+  } catch (error) {
+    console.error("Error fetching username:", error);
+    return null;
+  }
+}
+
+// Extract email from the current URL
+const currentURL = window.location.href;
+const email = extractEmailFromURL(currentURL);
+
+// Fetch username from Realtime Database based on email
+if (email) {
+  fetchUsernameFromEmail(email)
+    .then(username => {
+      if (username) {
+        console.log('Username:', username);
+        localStorage.setItem("loggedInUser", email);
+        document.getElementById('emailDisplay').innerHTML = username;
+      } else {
+        console.log('Username not found for email:', email);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching username:', error);
+    });
+} else {
+  console.log('Email not found in the URL.');
+}
+
+
+
+    $(document).ready(function() {
+     
+      function revealText() {
+        var $el = $('#revealText');
+        var text = $el.text();
+        $el.empty();
+        var len = text.length;
+        for (var i = 0; i < len; i++) {
+          $('<span>').text(text.charAt(i)).css('opacity', 0).appendTo($el).delay(100 * i).animate({
+            opacity: 1
+          }, 100);
+        }
+      }
+   
+      $(window).on('load', function() {
+        revealText();
+      });
+    
+      $(window).scroll(function() {
+        var windowHeight = $(window).height(),
+            aboutTopOffset = $('#about').offset().top,
+            windowScroll = $(this).scrollTop();
+
+        if (windowScroll > aboutTopOffset - windowHeight + 200) {
+          $('#about').addClass('fadeIn');
+        }
+      });
+     
+      $('a[href*="#"]').on('click', function(event) {
+        if (this.hash !== '') {
+          event.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 1000, function() {
+            window.location.hash = hash;
+          });
+        }
+      });
+    });
+    $(document).ready(function() {
+  
+  $('a[href*="#"]').on('click', function(event) {
+    if (this.hash !== '') {
+      event.preventDefault();
+      const hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 1000, function() {
+        window.location.hash = hash;
+        if (hash === '#login') {
+          $('.login-container').addClass('fadeIn'); 
+        }
+      });
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const carousel = document.querySelector(".custom-carousel");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const cardWidth = document.querySelector(".customes-card").offsetWidth;
+  let scrollAmount = 0;
+
+  nextBtn.addEventListener("click", function () {
+    scrollAmount += cardWidth;
+    if (scrollAmount > carousel.scrollWidth - carousel.clientWidth) {
+      scrollAmount = carousel.scrollWidth - carousel.clientWidth;
+    }
+    carousel.scrollTo({
+      top: 0,
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+  });
+
+  prevBtn.addEventListener("click", function () {
+    scrollAmount -= cardWidth;
+    if (scrollAmount < 0) {
+      scrollAmount = 0;
+    }
+    carousel.scrollTo({
+      top: 0,
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+  });
+});
+function signup() {
+      const username = document.getElementById('username').value;
+      const profileSection = document.querySelector('.profile');
+      const userNameElement = document.getElementById('userName');
+
+      localStorage.setItem('username', username);
+
+      userNameElement.textContent = `Hello, ${username}!`;
+      profileSection.style.display = 'block';
+    }
+
+    window.onload = function() {
+      const storedUsername = localStorage.getItem('username');
+      const profileSection = document.querySelector('.profile');
+      const userNameElement = document.getElementById('userName');
+
+      if (storedUsername) {
+        userNameElement.textContent = `Hello, ${storedUsername}!`;
+        profileSection.style.display = 'block';
+      }
+    };
+    const logoutButton = document.getElementById("logoutButton");
+  logoutButton.addEventListener("click", function() {
+    // Clear the stored username
+    localStorage.removeItem("loggedInUser");
+    // Clear the displayed username
+    emailDisplay.textContent = "";
+    window.location.href = "login.html";
+  });
+  
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+            var translateLink = document.getElementById('translateLink');
+            translateLink.href = 'index.html?email=' + extractEmailFromURL(currentURL); // Set href attribute with email parameter
+        });
+  </script>
+</body>
+</html>

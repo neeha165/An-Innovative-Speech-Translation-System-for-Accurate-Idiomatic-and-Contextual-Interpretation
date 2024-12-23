@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Text Extractor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, white, rgb(247, 247, 247));
+            color: #333;
+            padding-top: 80px; /* Add padding to create space for the navbar */
+        }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .container {
+            width: calc(50% - 40px); /* Adjust the width as needed */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-top: 80px; /* Add margin-top to create space between navbar and container */
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2ca446;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #780099;
+        }
+
+        .result {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d2d2d2; 
+            overflow: auto; /* Add overflow for scrolling */
+            max-height: 300px; /* Adjust max-height as needed */
+        }
+
+        /* Navbar styles */
+        header {
+            background: linear-gradient(135deg, #fffefe, #ececec);
+            padding: 15px 30px;
+            width: 100%;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            color: rgb(0, 0, 0);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            background: -webkit-linear-gradient(135deg, #469cc3, #ec7cf0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 720;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            padding-top: 15px;
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding-right: 120px;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #d24aff;
+            text-decoration: double;
+        }
+
+        .user-profile {
+            position: relative;
+            list-style: none;
+            display: inline-block;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .user-profile:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content span,
+        .dropdown-content p {
+            color: #fff;
+            margin: 5px 0;
+        }
+
+        .dropdown-content span a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .dropdown-content span a:hover {
+            color: #28a745;
+        }
+
+        .dropdown-content span u {
+            color: #ff0000;
+            cursor: pointer;
+        }
+        .custom-file-upload2{
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #23b059;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .custom-file-upload2:hover{
+            background-color: #1b6838;
+        }
+        .custom-file-upload3{
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #d51bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .custom-file-upload3:hover{
+            background-color: #b604b6;
+        }
+        .video-container {
+            text-align: center;
+        }
+        .video-container button {
+            margin-top: 10px;
+        }
+        #videoContainer{
+            padding-left: 180px;
+        }
+        .container:nth-child(2) {
+            margin-left: 20px; /* Add margin to create space between the containers */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <header class="sticky-header">
+        <nav class="navbar">
+            <h1 class="logo"><span>Translation</span></h1>
+            <ul class="nav-links">
+                <li><a href="new.html">Home</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <div class="container-wrapper">
+        <!-- Original video upload section -->
+        <div class="container">
+            <h1>Upload Video</h1>
+            <!-- Form for uploading video -->
+            <!-- Include file input and buttons for viewing and extracting text -->
+            <form method="POST" enctype="multipart/form-data" id="uploadForm" action="/extracttext">
+                <label for="file" class="custom-file-upload">Choose Video</label>
+                <input type="file" id="file" name="file">
+                <input type="button" value="View Video" onclick="viewVideo()" class="custom-file-upload2">
+                <input type="button" value="Extract Text" onclick="extractText()" class="custom-file-upload2">
+            </form>
+            <!-- Display uploaded video/Audio-->
+            <h2>Uploaded Video</h2>
+            <div id="videoContainer" style="display: none;">
+                <video id="uploadedVideo/Audio" width="400" controls>
+                    <source id="videoSource" src="#" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+            <!-- Display extracted text -->
+            <div id="extractedText" style="display: none;">
+                <h2>Extracted Text</h2>
+                <p id="displayText"></p>
+            </div>
+            <!-- Display any messages or results -->
+            {% if message %}
+            <p class="message">{{ message }}</p>
+            {% endif %}
+            {% if result %}
+            <div class="result">
+                <h2>Extracted Text</h2>
+                <p>{{ result }}</p>
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Translated video display section -->
+        <div class="container">
+            <h2>Translated Video</h2>
+            <div class="video-container">
+                <!-- Display translated video in a card -->
+                <div class="card">
+                    <video id="translatedVideo" width="400" controls>
+                        <source id="translatedVideoSource" src="#" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer section -->
+    <!-- Add your footer content here -->
+
+    <!-- JavaScript code -->
+    <script>
+        // Existing JavaScript code
+        // Add your existing JavaScript code here
+        function uploadVideo() {
+            var fileInput = document.getElementById('file');
+            var video = document.getElementById('uploadedVideo');
+            var source = document.getElementById('videoSource');
+
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                source.src = e.target.result;
+                video.load();
+                document.getElementById('videoContainer').style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        }
+
+        function viewVideo() {
+            uploadVideo(); // Call uploadVideo to load the video before displaying
+        }
+
+        function extractText() {
+            document.getElementById('uploadForm').submit(); // Submit the form to extract text
+        }
+
+        // Function to display translated video
+        function displayTranslatedVideo(videoUrl) {
+            var translatedVideo = document.getElementById('translatedVideo');
+            var translatedSource = document.getElementById('translatedVideoSource');
+            translatedSource.src = videoUrl;
+            translatedVideo.load();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Video Viewer</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <header class="sticky-header">
+        <nav class="navbar">
+            <h1 class="logo"><span>DynamicDub</span></h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#demo">Translate</a></li>
+                <li><a href="#login">Login</a></li>
+                <li class="user-profile" id="userProfile">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Profile Picture">
+                    <!-- Add user profile dropdown here if needed -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Uploaded Video Viewer</h1>
+        <video id="uploadedVideo" controls autoplay>
+            <source id="videoSource" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const videoFile = urlParams.get('file');
+        if (videoFile) {
+            const videoSource = document.getElementById('videoSource');
+            videoSource.setAttribute('src', videoFile);
+            const uploadedVideo = document.getElementById('uploadedVideo');
+            uploadedVideo.load();
+        } else {
+            // Handle case when no video file is provided
+            console.error('No video file provided.');
+        }
+    </script>
+</body>
+</html>

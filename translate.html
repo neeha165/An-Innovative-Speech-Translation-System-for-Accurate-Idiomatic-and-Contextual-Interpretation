@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translate Page</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .translate_sec {
+        margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="sticky-header">
+    <nav class="navbar">
+      <h1 class="logo"><span>DynamicDub</span></h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">About</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- Translate Section -->
+  <div class="translate_sec">
+  <section class="translation-section " id="translating">
+    <h2 class="gradient-heading">Translate</h2>
+    <div class="translation-card">
+      <div class="translation-card-content">
+        <div class="left-panel">
+          <div class="upload-container">
+            <label for="videoFile" class="custom-file-upload">
+              <i class="fas fa-cloud-upload-alt"></i> <span class="upload">Upload Video</span>
+              <input type="file" id="videoFile" style="display:none;">
+            </label>
+          </div>
+        </div>
+        <div class="right-panel">
+          <div class="language-fields">
+            <label for="fromLanguage" class="from">From:</label>
+            <select id="fromLanguage">
+              <option value="english">English</option>
+              <option value="telugu">Telugu</option>
+              <option value="hindi">Hindi</option>
+              <option value="bengali">Bengali</option>
+              <option value="tamil">Tamil</option>
+              <option value="kannada">Kannada</option>
+            </select>
+          </div>
+          <div class="language-fields">
+            <label for="toLanguage">To:</label>
+            <select id="toLanguage">
+              <option value="telugu">Telugu</option>
+              <option value="hindi">Hindi</option>
+              <option value="bengali">Bengali</option>
+              <option value="tamil">Tamil</option>
+              <option value="kannada">Kannada</option>
+            </select>
+          </div>
+          <div class="language-fields">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="custom-button">Translate Now</button>
+    </div>
+  </section>
+</div>
+  <!-- Your other content -->
+  <script>
+    function logout() {
+    localStorage.removeItem("loggedInUser");
+    // Redirect the user to the login page after logout if needed
+    window.location.href = "login.html";
+  }
+  </script>
+
+</body>
+</html>
